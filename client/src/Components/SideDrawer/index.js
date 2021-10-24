@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types'
 import { Drawer, Box } from '@mui/material'
 import validate from 'validate.js';
-import UserImage from './../../assets/User.png';
+import UserImage from '../../assets/User.png';
 import './SideDrawer.scss';
 
 const config = {

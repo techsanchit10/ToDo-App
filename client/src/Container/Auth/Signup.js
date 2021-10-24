@@ -16,8 +16,8 @@ import {
 } from "@mui/icons-material";
 import validate from "validate.js";
 import axios from 'axios';
-import Config from './../../utils/Config';
-import Common from './../../utils/Common';
+import Config from '../../utils/Config';
+import Common from '../../utils/Common';
 import { withRouter } from 'react-router-dom';
 
 const config = {

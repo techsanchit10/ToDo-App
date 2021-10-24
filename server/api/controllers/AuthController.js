@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const AuthService = require('./../services/AuthService');
+const AuthService = require('../services/AuthService');
 
 router.get("/", async (req, res) => {
   try {

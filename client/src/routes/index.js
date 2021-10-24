@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Redirect } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
-import Auth from "./../Container/Auth";
+import Auth from "../Container/Auth";
 import ProjectsDashboard from "../Container/ProjectsDashboard";
 
 

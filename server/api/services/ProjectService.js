@@ -1,4 +1,4 @@
-const ProjectModel = require('./../model/Project');
+const ProjectModel = require('../model/Project');
 const { v4: uuidV4 } = require('uuid')
 
 const createProject = async (projectDetails) => {

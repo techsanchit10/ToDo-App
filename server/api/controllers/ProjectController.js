@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const ProjectService = require("./../services/ProjectService");
-const validation = require("./../middlewares/validation");
+const ProjectService = require("../services/ProjectService");
+const validation = require("../middlewares/validation");
 
 router.post("/", validation.validateProjectBody, async (req, res) => {
   try {

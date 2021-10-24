@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
-import Common from "./../utils/Common";
+import Common from "../utils/Common";
 
 const ProtecteRoute = (props) => {
   const { component: Component, ...rest } = props;

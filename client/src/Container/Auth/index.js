@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './auth.scss';
-import AuthImage from './../../assets/AuthImage.png';
+import AuthImage from '../../assets/AuthImage.png';
 import Login from './Login';
 import Signup from './Signup';
 
