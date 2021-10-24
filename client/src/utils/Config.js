@@ -1,5 +1,5 @@
 const Config = {
-  serverURL: 'http://localhost:3001/api',
+  serverURL: 'http://ec2-52-66-211-194.ap-south-1.compute.amazonaws.com:3001//api',
   publicKey: `
 -----BEGIN RSA PUBLIC KEY-----
 MIIBCgKCAQEA17n+XVnZJu1NBiPRkI5+xR0iVFe4O7MM8PvKmW9B5p/y0i+fe1iC
