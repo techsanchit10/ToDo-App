@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const encryption = require('./../utils/encryption');
 
 const authenticate = {
   checkToken: (req, res, next) => {
@@ -25,7 +26,12 @@ const authenticate = {
         message: "Bad request!! Please send a valid token.",
       });
     }
-  }
+  },
+  decryptData: (req, res, next) => {
+    const decryptedPassword = encryption.decrypt(req.body.password);
+    req.body.password = decryptedPassword;
+    next();
+  },
 }
 
 module.exports = authenticate;

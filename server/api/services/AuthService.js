@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const UserModel = require('../model/User');
+const encryption = require('./../utils/encryption');
 
 const getUserDetails = async (email) => {
   try {
@@ -51,20 +52,21 @@ const loginUser = async (loginDetails) => {
   try {
     const user = await UserModel.findOne({
       email: loginDetails.email,
-      password: loginDetails.password,
-    }).select("name email");
+    }).select("name email password");
     if (user) {
-      return {
-        success: true,
-        data: {
-          token: jwt.sign({ user }, process.env.JWT_SECRET)
+      const decryptedSavedPassword = encryption.decrypt(user.password);
+      if (decryptedSavedPassword === loginDetails.password) {
+        return {
+          success: true,
+          data: {
+            token: jwt.sign({ user }, process.env.JWT_SECRET)
+          }
         }
       }
-    } else {
-      return {
-        success: false,
-        message: "Your Email & Password do not match."
-      }
+    }
+    return {
+      success: false,
+      message: "Your Email & Password do not match."
     }
   } catch (err) {
     throw err;

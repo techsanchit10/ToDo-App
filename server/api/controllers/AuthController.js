@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const authenticate = require('../middlewares/authenticate');
 const AuthService = require('../services/AuthService');
 
 router.get("/", async (req, res) => {
@@ -19,7 +20,7 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login", authenticate.decryptData, async (req, res) => {
   try {
     const loginResponse = await AuthService.loginUser(req.body);
     res.send(loginResponse);

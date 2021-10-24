@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import crypto from 'crypto';
 import {
   Button,
   IconButton,
@@ -85,12 +86,25 @@ const Login = ({ history }) => {
     setRememberMe(!rememberMe);
   }
 
+  const encrypt = (value) => {
+    return crypto.publicEncrypt(
+      {
+        key: Config.publicKey,
+      },
+      Buffer.from(value)
+    );
+  };
+
   const handleLogin = (e) => {
     e.preventDefault();
     setFormLoading(true);
     localStorage.setItem('rememberMe', rememberMe);
     setErrorText('');
-    axios.post(`${Config.serverURL}/auth/login`, loginDetails.values)
+    const encryptedLoginDetails = {
+      ...loginDetails.values,
+      password: encrypt(loginDetails.values.password).toString('base64'),
+    }
+    axios.post(`${Config.serverURL}/auth/login`, encryptedLoginDetails)
         .then(resp => {
           setFormLoading(false);
           let responseData = resp && resp.data;

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import crypto from 'crypto';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -88,12 +89,25 @@ const Signup = ({ history }) => {
     setRememberMe(!rememberMe);
   }
 
+  const encrypt = (value) => {
+    return crypto.publicEncrypt(
+      {
+        key: Config.publicKey,
+      },
+      Buffer.from(value)
+    );
+  };
+
   const handleSignup = (e) => {
     e.preventDefault();
     setErrorText('');
     localStorage.setItem('rememberMe', rememberMe);
     setFormLoading(true);
-    axios.post(`${Config.serverURL}/auth/signup`, signupDetails.values)
+    const encryptedSignupDetails = {
+      ...signupDetails.values,
+      password: encrypt(signupDetails.values.password).toString('base64'),
+    }
+    axios.post(`${Config.serverURL}/auth/signup`, encryptedSignupDetails)
           .then(resp => {
             setFormLoading(false);
             let responseData = resp && resp.data;
