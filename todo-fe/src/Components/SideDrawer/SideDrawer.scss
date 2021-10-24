@@ -1,0 +1,101 @@
+.side-drawer {
+  position: relative;
+}
+
+.drawer-container {
+  padding: 3rem 2rem;
+
+  .input-field {
+    outline: none;
+    border: 1px solid rgb(201, 198, 198);
+    border-radius: 4px;
+  }
+  
+  .project-title {
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 18px;
+  }
+  .title-container:after {
+    content: ""; 
+    display: block;
+    margin-top: 10px;
+    margin-left: 12px; 
+    width: 10%;
+    border-radius: 10px;
+    border-bottom: 3px solid rgba(50, 156, 137, 1);
+  }
+
+  .body-container {
+    margin-top: 3rem;
+
+    .body-item-row {
+      margin: 3rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .field-name {
+        color: rgba(107, 107, 107, 1);
+        flex: 1;
+      }
+      .field-value {
+        flex: 2.5;
+        text-align: left;
+      }
+    }
+
+    .creator-detail {
+      display: flex;
+      align-items: center;
+      
+      .profile-pic {
+        height: 30px;
+        width: 30px;
+        margin-right: 15px;
+      }
+    }
+
+    .desc-textarea {
+      resize: none;
+      width: 100%;
+      height: 70px;
+      padding: 8px 10px;
+    }
+  }
+}
+
+.actions-rows {
+  position: absolute;
+  bottom: 2rem;
+  display: flex;
+  width: 50%;
+  // margin-right: 2rem;
+}
+
+.update-btn {
+  background-color: rgba(50, 156, 137, 1);
+}
+
+.discard-btn {
+  background-color: #dd4d40;
+}
+
+.update-btn, .discard-btn{
+  flex: 1;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 3px 0;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
